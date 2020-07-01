@@ -22,37 +22,46 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<ProductBloc>(context)
+        .add(DataSource.questionAnswers.length);
+  }
+
   @override
   Widget build(BuildContext context) {
-    var dataS = (DataSource.questionAnswers);
-    print(dataS);
     return Scaffold(
       appBar: AppBar(
         title: Text('ListView Builder + BLoC'),
       ),
       body: Column(
         children: <Widget>[
-          RaisedButton(
-            onPressed: () {
-              BlocProvider.of<ProductBloc>(context)
-                  .add(DataSource.questionAnswers.length);
-            },
-            child: Text('Get Data'),
-          ),
           BlocBuilder<ProductBloc, List<Product>>(
             builder: (context, produk) => Expanded(
-              child: ListView.builder(
-                itemCount: produk.length,
-                itemBuilder: (context, index) {
-                  var productCard = ProductCard(
-                    judul: produk[index].judul,
-                    jawaban: produk[index].jawaban,
-                  );
-                  return (productCard) == null
-                      ? CircularProgressIndicator()
-                      : productCard;
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  BlocProvider.of<ProductBloc>(context)
+                      .add(DataSource.questionAnswers.length);
                 },
+                child: ListView.builder(
+                  itemCount: produk.length,
+                  itemBuilder: (context, index) {
+                    var productCard = ProductCard(
+                      judul: produk[index].judul,
+                      jawaban: produk[index].jawaban,
+                    );
+                    return (productCard) == null
+                        ? CircularProgressIndicator()
+                        : productCard;
+                  },
+                ),
               ),
             ),
           ),

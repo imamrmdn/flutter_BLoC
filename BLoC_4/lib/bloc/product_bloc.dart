@@ -20,11 +20,10 @@ class ProductBloc extends Bloc<int, List<Product>> {
   @override
   Stream<List<Product>> mapEventToState(int event) async* {
     List<Product> produk = [];
-    //var index = DataSource.questionAnswers as int;
     produk.add(
       Product(
-        judul: DataSource.questionAnswers[3]['Judul'],
-        jawaban: DataSource.questionAnswers[0]['jawaban'],
+        judul: DataSource.questionAnswers[5]['Judul'],
+        jawaban: DataSource.questionAnswers[2]['jawaban'],
       ),
     );
 
