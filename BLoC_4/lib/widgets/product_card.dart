@@ -17,7 +17,10 @@ class ProductCard extends StatelessWidget {
           margin: EdgeInsets.all(10.0),
           width: MediaQuery.of(context).size.width,
           height: 70,
-          color: Colors.teal,
+          decoration: BoxDecoration(
+            color: Colors.lightBlue,
+            borderRadius: BorderRadius.circular(10),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
@@ -25,9 +28,23 @@ class ProductCard extends StatelessWidget {
               children: <Widget>[
                 Text(judul),
                 SizedBox(height: 10.0),
-                Text(jawaban),
+                Text(
+                  jawaban,
+                  maxLines: 1,
+                ),
               ],
             ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Icon(Icons.refresh),
+              SizedBox(width: 5),
+              Text('Refresh untuk pertanyaan acak'),
+            ],
           ),
         ),
       ],

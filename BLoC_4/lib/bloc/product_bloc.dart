@@ -2,6 +2,7 @@
 import 'package:BLoC_4/dataSource/json_static.dart';
 //import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:math';
 
 class Product {
   String judul;
@@ -19,11 +20,13 @@ class ProductBloc extends Bloc<int, List<Product>> {
 
   @override
   Stream<List<Product>> mapEventToState(int event) async* {
+    final Random random = Random();
+    var change = random.nextInt(6);
     List<Product> produk = [];
     produk.add(
       Product(
-        judul: DataSource.questionAnswers[5]['Judul'],
-        jawaban: DataSource.questionAnswers[2]['jawaban'],
+        judul: DataSource.questionAnswers[change]['Judul'],
+        jawaban: DataSource.questionAnswers[change]['jawaban'],
       ),
     );
 
