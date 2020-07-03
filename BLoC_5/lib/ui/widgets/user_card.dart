@@ -12,8 +12,8 @@ class UserCard extends StatelessWidget {
     return Card(
       child: Container(
         width: double.infinity,
-        margin: EdgeInsets.all(20),
-        padding: EdgeInsets.all(20),
+        margin: EdgeInsets.all(10),
+        padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -24,7 +24,7 @@ class UserCard extends StatelessWidget {
               height: 75.0,
               padding: EdgeInsets.only(right: 10.0),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
                   image: NetworkImage(user.avatar),
                 ),
