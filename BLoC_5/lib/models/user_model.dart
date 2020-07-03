@@ -2,10 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class User {
-  String id;
-  String email;
-  String name;
-  String avatar;
+  String id, email, name, avatar;
 
   User({
     this.id,
@@ -17,8 +14,8 @@ class User {
   factory User.createUser(Map<String, dynamic> data) {
     return User(
       id: data['id'].toString(),
-      name: data['nama'],
-      email: data['first_name'] + ' ' + data['last_name'],
+      email: data['email'],
+      name: data['first_name'] + ' ' + data['last_name'],
       avatar: data['avatar'],
     );
   }
@@ -31,16 +28,14 @@ class User {
 
     List<dynamic> listUser = (jsonObj as Map<String, dynamic>)['data'];
 
-    List<User> users = [];
-    for (int i = 0; i < listUser.length; i++) {
-      users.add(User.createUser(listUser[i]));
-    }
+    var userList = listUser
+        .map<User>((item) => User(
+            id: item['id'].toString(),
+            name: item['first_name'] + ' ' + item['last_name'],
+            email: item['email'],
+            avatar: item['avatar']))
+        .toList();
 
-    return users;
+    return userList;
   }
-}
-
-//untuk digunakan di class bloc
-class UninitializedUser extends User {
-  //
 }

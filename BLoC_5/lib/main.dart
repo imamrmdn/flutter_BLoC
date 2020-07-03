@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: BlocProvider<UserBloc>(
-        create: (context) => UserBloc(),
+        create: (context) => UserBloc()..add(UserEvent()),
         child: HomePage(),
       ),
     );
