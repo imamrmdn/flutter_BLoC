@@ -20,7 +20,10 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           child: BlocBuilder<UserBloc, UserState>(builder: (context, state) {
             if (state is UserUninitialized) {
-              return Center(child: CircularProgressIndicator());
+              return Center(
+                  child: CircularProgressIndicator(
+                backgroundColor: Colors.red,
+              ));
             } else {
               UserLoaded userLoaded = state as UserLoaded;
               return ListView.builder(
