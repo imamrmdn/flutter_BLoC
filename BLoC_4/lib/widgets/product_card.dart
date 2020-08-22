@@ -41,9 +41,7 @@ class ProductCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Icon(Icons.refresh),
               SizedBox(width: 5),
-              Text('Refresh untuk pertanyaan acak'),
             ],
           ),
         ),

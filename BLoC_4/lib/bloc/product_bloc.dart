@@ -22,13 +22,34 @@ class ProductBloc extends Bloc<int, List<Product>> {
   Stream<List<Product>> mapEventToState(int event) async* {
     final Random random = Random();
     var change = random.nextInt(6);
+    var changes = random.nextInt(5);
+    var changess = random.nextInt(4);
     List<Product> produk = [];
-    produk.add(
-      Product(
-        judul: DataSource.questionAnswers[change]['Judul'],
-        jawaban: DataSource.questionAnswers[change]['jawaban'],
-      ),
-    );
+    produk
+      ..add(
+        Product(
+          judul: DataSource.questionAnswers[change]['Judul'],
+          jawaban: DataSource.questionAnswers[changess]['jawaban'],
+        ),
+      )
+      ..add(
+        Product(
+          judul: DataSource.questionAnswers[changes]['Judul'],
+          jawaban: DataSource.questionAnswers[changes]['jawaban'],
+        ),
+      )
+      ..add(
+        Product(
+          judul: DataSource.questionAnswers[changess]['Judul'],
+          jawaban: DataSource.questionAnswers[changess]['jawaban'],
+        ),
+      )
+      ..add(
+        Product(
+          judul: DataSource.questionAnswers[changes]['Judul'],
+          jawaban: DataSource.questionAnswers[change]['jawaban'],
+        ),
+      );
 
     yield produk;
   }
